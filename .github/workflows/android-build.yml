@@ -3,10 +3,12 @@ name: Build Android Application
 on:
   push:
     branches:
-      - '**'
+      - main
+      - master
   pull_request:
     branches:
-      - '**'
+      - main
+      - master
   workflow_dispatch:
 
 jobs:
@@ -30,9 +32,9 @@ jobs:
 
       - name: Setup Environment Variables
         run: |
-          cp .env.example .env
+          cp .env.example .env || true
           if [ -n "${{ secrets.GEMINI_API_KEY }}" ]; then
-            echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" > .env
+            echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> .env
           fi
 
       - name: Setup Gradle
