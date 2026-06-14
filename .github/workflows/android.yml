@@ -35,11 +35,13 @@ jobs:
             echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" > .env
           fi
 
-      - name: Build Debug APK
+      - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          arguments: assembleDebug --no-daemon
-          validate-wrappers: false
+          wrapper-validation-enabled: false
+
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug --no-daemon
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
