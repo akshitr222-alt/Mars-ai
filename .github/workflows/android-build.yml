@@ -33,9 +33,6 @@ jobs:
       - name: Setup Environment Variables
         run: |
           cp .env.example .env || true
-          if [ -n "${{ secrets.GEMINI_API_KEY }}" ]; then
-            echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> .env
-          fi
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -51,5 +48,3 @@ jobs:
           name: app-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
-          
-      # The APK will be available in the Artifacts section after the build finishes.
