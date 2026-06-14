@@ -51,3 +51,5 @@ jobs:
           name: app-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
+          
+      # The APK will be available in the Artifacts section after the build finishes.
